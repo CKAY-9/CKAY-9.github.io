@@ -1,13 +1,22 @@
 // APIs
-const GITHUB_REPO_URL = "https://api.github.com/users/CKAY-9/repos"
+const GITHUB_REPO_URL = "https://api.github.com/users/CKAY-9/repos";
 
 // DOM Elements
 const projects = document.getElementById("projects");
+const sortOptions = document.getElementById("sortingOptions");
 
-window.onload = async (ev) => {
-    const repo_response = await fetch(GITHUB_REPO_URL);
+let currentSort = "pushed";
+
+const fetchReposFromGithub = async () => {
+    projects.innerHTML = "<h2>Loading...</h2>";
+
+    const repo_response = await fetch(GITHUB_REPO_URL + "?sort=" + currentSort);
     const repo_json = await repo_response.json();
 
+    projects.innerHTML = "";
+
+
+    let currDelay = 0;
     for (const repo of repo_json) {
         if (repo.private) continue;
 
@@ -26,7 +35,7 @@ window.onload = async (ev) => {
         }
 
         projects.innerHTML += `
-            <div class="project">
+            <div class="project" style="animation-delay: ${currDelay * 100}ms">
                 <h2>${repo.name}</h2>
                 <span>${description}</span>
                 ${topLang === null ? "" : "<span>Written in " + topLang + "</span>"}
@@ -34,5 +43,16 @@ window.onload = async (ev) => {
                 <a href="${repo.html_url}">View on Github</a>
             </div>
         `
+
+        currDelay++;
     }
+}
+
+sortOptions.onchange = async (ev) => {
+    currentSort = ev.target.value;
+    await fetchReposFromGithub();
+}
+
+window.onload = async (ev) => {
+    await fetchReposFromGithub();
 }
