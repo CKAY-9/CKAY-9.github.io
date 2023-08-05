@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap");
 
+:root {
+    --text: 255, 255, 255;
+    --bg: 5, 5, 10;
+    --accent: 150, 150, 255;
+}
+
 @keyframes projectLoadIn {
     0% {
         opacity: 0;
@@ -14,8 +20,8 @@
 }
 
 body {
-    background-color: #F4E0B9;
-    color: black;
+    background-color: rgb(var(--bg));
+    color: rgb(var(--text));
     padding: 0;
     margin: 0;
     font-family: "Inter", sans-serif;
@@ -40,11 +46,12 @@ body {
 .icon {
     border-radius: 50%;
     width: 20rem;
-    aspect-ratio: 1;
+    height: 20rem;
+    object-fit: fill;
 }
 
 .project {
-    border: 1px solid rgb(0, 0, 0, 0.5);
+    border: 1px solid rgb(var(--accent), 0.5);
     border-radius: 1rem;
     padding: 2rem;
     max-width: fit-content;
@@ -56,6 +63,13 @@ body {
     opacity: 0;
 
     animation: projectLoadIn 0.5s ease forwards;
+}
+
+select {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--text));
+    border: 1px solid rgb(var(--accent), 0.5);
+    padding: 0.5rem 1rem;
 }
 
 .project h2 {
