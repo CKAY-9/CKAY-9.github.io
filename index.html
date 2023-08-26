@@ -5,16 +5,27 @@
 
 <body>
     <div class="splash">
-        <img src="./content/icon.png" class="icon" />
-        <h1>CKAY-9</h1>
-        <h2>Developer</h2>
+        <img src="" id="gitIcon" class="icon" />
+        <h1 id="gitUsername" class="username"></h1>
+        <span class="name">Cameron A.</span>
+        <div class="links">
+            <a href="https://github.com/CKAY-9" target="_blank">
+                <img src="./content/github.svg" alt="Github" />
+            </a>
+            <a href="https://steamcommunity.com/id/CKAY9" target="_blank">
+                <img src="./content/steam.svg" alt="Steam" />
+            </a>
+            <a href="https://www.tiktok.com/@ckay_9" target="_blank">
+                <img src="./content/tiktok.svg" alt="Tiktok" />
+            </a>
+        </div>
         <a style="color: inherit; text-decoration: none;" href="#gt" id="viewProjects" style="margin-top: 5rem">
             <h3>Projects</h3>
             <img style="filter: invert(1)" src="./content/down.svg" />
         </a>
     </div>
 
-    <section style="margin: 1rem 15rem" id="gt">
+    <section style="margin: 1rem 15rem" class="gt" id="gt">
         <label>Sort by</label>
         <select id="sortingOptions">
             <option value="updated">Updated</option>
