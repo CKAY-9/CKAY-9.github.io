@@ -1,27 +1,39 @@
 <head>
-    <link rel="stylesheet" href="./style.css">
-    <title>CKAY-9</title>
+  <link rel="stylesheet" href="./style.css" />
+  <title>CKAY-9</title>
 </head>
 
 <body>
   <div class="splash">
-    <img src="" id="gitIcon" class="icon" />
-    <h1 id="gitUsername" class="username"></h1>
-    <span class="name">Cameron A.</span>
-    <div class="links">
-      <a href="https://github.com/CKAY-9" target="_blank">
-        <img src="./content/github.svg" alt="Github" />
+    <div class="content">
+      <img src="" id="gitIcon" class="icon" />
+      <h1 id="gitUsername" class="username"></h1>
+      <span class="name">Cameron A.</span>
+      <p style="width: 50%;">
+        Hello, my name is Cameron and I have been programming since mid 2022. My primary focus in web development; however, 
+        I like to try and make different things (i.e. Minecraft plugins, games, etc.) and expand my knowledge. Although I know plenty of languages,
+        I usually use TypeScript, Rust, Python, and Java, but if I need to use whatever I will try my best :)
+      </p>
+      <div class="links">
+        <a href="https://github.com/CKAY-9" target="_blank">
+          <img src="./content/github.svg" alt="Github" />
+        </a>
+      </div>
+      <a
+        style="color: inherit; text-decoration: none"
+        href="#gt"
+        id="viewProjects"
+        style="margin-top: 5rem"
+      >
+        <h3>Projects</h3>
+        <img style="filter: invert(1); opacity: 0.5;" src="./content/down.svg" />
       </a>
     </div>
-    <a style="color: inherit; text-decoration: none;" href="#gt" id="viewProjects" style="margin-top: 5rem">
-      <h3>Projects</h3>
-      <img style="filter: invert(1)" src="./content/down.svg" />
-    </a>
   </div>
 
   <section style="margin: 1rem 15rem" class="gt" id="gt">
-    <h2>Example Projects</h2> 
-    <div style="margin-bottom: 5rem;">
+    <h2>Example Projects</h2>
+    <div style="margin-bottom: 5rem">
       <a href="./podcast-website/index.html">Podcast Website</a>
     </div>
 
@@ -33,8 +45,7 @@
       <option value="full_name">Name</option>
     </select>
   </section>
-  <main class="projects" id="projects">
-  </main>
+  <main class="projects" id="projects"></main>
 
   <script src="./index.js"></script>
 </body>
