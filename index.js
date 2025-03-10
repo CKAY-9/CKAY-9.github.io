@@ -11,33 +11,33 @@ const icon = document.getElementById("gitIcon");
 let currentSort = "pushed";
 
 const fetchReposFromGithub = async () => {
-    projects.innerHTML = "<h2>Loading...</h2>";
+	projects.innerHTML = "<h2>Loading...</h2>";
 
-    const repo_response = await fetch(GITHUB_REPO_URL + "?sort=" + currentSort);
-    const repo_json = await repo_response.json();
+	const repo_response = await fetch(GITHUB_REPO_URL + "?sort=" + currentSort);
+	const repo_json = await repo_response.json();
 
-    projects.innerHTML = "";
+	projects.innerHTML = "";
 
 
-    let currDelay = 0;
-    for (const repo of repo_json) {
-        if (repo.private) continue;
+	let currDelay = 0;
+	for (const repo of repo_json) {
+		if (repo.private) continue;
 
-        let license = repo.license;
-        let description = repo.description;
-        let topLang = repo.language;
+		let license = repo.license;
+		let description = repo.description;
+		let topLang = repo.language;
 
-        if (license === null) {
-            license = "None";
-        } else {
-            license = repo.license.name;
-        }
+		if (license === null) {
+			license = "None";
+		} else {
+			license = repo.license.name;
+		}
 
-        if (description === null) { 
-            description = "No description provided.";
-        }
+		if (description === null) {
+			description = "No description provided.";
+		}
 
-        projects.innerHTML += `
+		projects.innerHTML += `
             <div class="project" style="animation-delay: ${currDelay * 100}ms">
                 <h2 class="repoName">${repo.name}</h2>
                 <span>${description}</span>
@@ -47,26 +47,26 @@ const fetchReposFromGithub = async () => {
             </div>
         `
 
-        currDelay++;
-    }
+		currDelay++;
+	}
 }
 
 const fetchUserFromGithub = async () => {
-    const user_response = await fetch(GITHUB_USER_URL);
-    const user_json = await user_response.json();
+	const user_response = await fetch(GITHUB_USER_URL);
+	const user_json = await user_response.json();
 
-    console.log(user_json);
+	console.log(user_json);
 
-    username.innerText = user_json.login;
-    icon.src = user_json.avatar_url;
+	username.innerText = user_json.login;
+	icon.src = user_json.avatar_url;
 }
 
 sortOptions.onchange = async (ev) => {
-    currentSort = ev.target.value;
-    await fetchReposFromGithub();
+	currentSort = ev.target.value;
+	await fetchReposFromGithub();
 }
 
 window.onload = async (ev) => {
-    await fetchUserFromGithub();
-    await fetchReposFromGithub();
+	await fetchUserFromGithub();
+	await fetchReposFromGithub();
 }
